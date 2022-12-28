@@ -1,0 +1,105 @@
+
+.participates{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    .item{
+        padding: 40px;
+        border: 1px solid #c47603;
+        width: 100%;
+        text-align: center;
+        text-transform: uppercase;
+        color: #fff;
+        background-color: var(--orange);
+        font-family: helcon;
+        font-size: larger;
+        &.active{
+            background-color: var(--orange-dark);
+        }
+    }
+}
+.content-remote {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #455a64;
+    padding-top: 30%;
+    padding-bottom: 30%;
+
+    button {
+        display: block;
+        border-radius: 100%;
+        border: none;
+        outline: none;
+        margin: 32px;
+        padding: 32px;
+        background-color: #03a9f4;
+        box-shadow: 3px 3px 7px #333;
+        cursor: pointer;
+
+        &.none {
+            opacity: 0;
+            cursor: auto;
+        }
+
+        &:active {
+            box-shadow: none;
+        }
+    }
+
+    svg {
+        fill: white;
+        width: 64px;
+        height: 64px;
+    }
+
+    section {
+        display: inline-block;
+    }
+
+    .remote-buttons {
+        position: relative;
+    }
+
+    .btn-section {
+        &:after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #517e8b;
+            width: 4px;
+            height: 65%;
+            box-shadow: 2px 2px 7px #333;
+            //border-radius: 25px;
+        }
+
+        .btn-up {
+            background-color: var(--green-ok);
+        }
+
+        .btn-down {
+            background-color: var(--red-ko);
+        }
+
+        .remote {
+            display: inline-block;
+            padding: 32px 0;
+        }
+
+        .play {
+            background-color: var(--start);
+        }
+
+        .source {
+            background-color: var(--orange);
+        }
+        .change {
+            background-color: var(--default);
+        }
+    }
+
+
+}

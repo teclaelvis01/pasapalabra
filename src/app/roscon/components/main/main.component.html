@@ -1,0 +1,17 @@
+
+
+<div id="juego-pasapalabra" class="jugando" #main>
+
+  <div class="btn-fullscreen">
+    <a (click)="onFullScreen()">
+      <img class="img-fullscreen" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/OOjs_UI_icon_fullScreen.svg/16px-OOjs_UI_icon_fullScreen.svg.png" alt="">
+    </a>
+  </div>
+
+  <ng-container *ngIf="participate1?.active || participate2?.active">
+    <app-circle [participate]="participate1?.active ? participate1 : participate2"></app-circle>
+  </ng-container>
+
+
+  
+</div>

@@ -1,0 +1,100 @@
+<div id="rosco" class="cX">
+  <!-- <h2>{{participate | json}}</h2> -->
+  <div class="circulo-rosco">
+    <div [ngClass]="item.status" class="letraa burbuja" *ngFor="let item of letters">
+      <div><span class="cXY">{{item.text}}</span></div>
+    </div>
+    <!-- <div class="letrab burbuja">
+        <div><span class="cXY">B</span></div>
+      </div>
+      <div class="letrac burbuja">
+        <div><span class="cXY">C</span></div>
+      </div>
+      <div class="letrad burbuja incorrecta">
+        <div><span class="cXY">D</span></div>
+      </div>
+      <div class="letrae burbuja">
+        <div><span class="cXY">E</span></div>
+      </div>
+      <div class="letraf burbuja">
+        <div><span class="cXY">F</span></div>
+      </div>
+      <div class="letrag burbuja">
+        <div><span class="cXY">G</span></div>
+      </div>
+      <div class="letrah burbuja">
+        <div><span class="cXY">H</span></div>
+      </div>
+      <div class="letrai burbuja">
+        <div><span class="cXY">I</span></div>
+      </div>
+      <div class="letraj burbuja">
+        <div><span class="cXY">J</span></div>
+      </div>
+      <div class="letral burbuja">
+        <div><span class="cXY">L</span></div>
+      </div>
+      <div class="letram burbuja">
+        <div><span class="cXY">M</span></div>
+      </div>
+      <div class="letran burbuja">
+        <div><span class="cXY">N</span></div>
+      </div>
+      <div class="letrañ burbuja">
+        <div><span class="cXY">Ñ</span></div>
+      </div>
+      <div class="letrao burbuja">
+        <div><span class="cXY">O</span></div>
+      </div>
+      <div class="letrap burbuja">
+        <div><span class="cXY">P</span></div>
+      </div>
+      <div class="letraq burbuja">
+        <div><span class="cXY">Q</span></div>
+      </div>
+      <div class="letrar burbuja">
+        <div><span class="cXY">R</span></div>
+      </div>
+      <div class="letras burbuja">
+        <div><span class="cXY">S</span></div>
+      </div>
+      <div class="letrat burbuja">
+        <div><span class="cXY">T</span></div>
+      </div>
+      <div class="letrau burbuja">
+        <div><span class="cXY">U</span></div>
+      </div>
+      <div class="letrav burbuja">
+        <div><span class="cXY">V</span></div>
+      </div>
+      <div class="letrax burbuja">
+        <div><span class="cXY">X</span></div>
+      </div>
+      <div class="letray burbuja">
+        <div><span class="cXY">Y</span></div>
+      </div>
+      <div class="letraz burbuja">
+        <div><span class="cXY">Z</span></div>
+      </div> -->
+  </div>
+  <div id="resultado">
+    <div class="si cXY">Sí</div>
+    <div class="no cXY">No</div>
+    <div class="pasapalabra cXY">pasapalabra</div>
+  </div>
+
+</div>
+
+
+<div id="score">
+  <div id="tiempo" class="cXY" [ngClass]="[participate?.timeClass]">
+    <div id="segundos-wrap" >
+      <span id="minutos">{{participate?.time | humantimer: 'minute' | number : '2.0'}}</span>:<span id="segundos">{{participate?.time | humantimer: '' | number: '2.0'}}</span>
+    </div>
+    <div id="progress"></div>
+  </div>
+  <div class="acertadas cXY">{{participate?.words_ok}}</div>
+  <div class="incorrectas cXY">{{participate?.words_ko}}</div>
+  <div class="quedan cXY">{{participate?.words_remainder}}</div>
+  
+</div>
