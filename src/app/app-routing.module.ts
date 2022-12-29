@@ -10,7 +10,11 @@ const routes: Routes = [
   {
     path:'p',
     loadChildren:() => import('./roscon/roscon.module').then(m=>m.CircleModule)
-  }
+  },
+  {
+    path:'n',
+    loadChildren:() => import('./nominations/nominations.module').then(m=>m.NominationsModule)
+  },
 ];
 
 @NgModule({

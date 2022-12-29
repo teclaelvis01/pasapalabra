@@ -7,6 +7,7 @@ export const environment = {
   firebase: {
     apiKey: "AIzaSyDcGud-9hOTY_7gs-lCX9XoIucUULg45Ng",
     authDomain: "pasapalabra-debe0.firebaseapp.com",
+    databaseURL: "https://pasapalabra-debe0-default-rtdb.europe-west1.firebasedatabase.app",
     projectId: "pasapalabra-debe0",
     storageBucket: "pasapalabra-debe0.appspot.com",
     messagingSenderId: "1012676895688",

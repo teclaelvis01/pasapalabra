@@ -1,4 +1,7 @@
 {
+  "projects": {
+    "default": "pasapalabra-debe0"
+  },
   "targets": {
     "pasapalabra-debe0": {
       "hosting": {
