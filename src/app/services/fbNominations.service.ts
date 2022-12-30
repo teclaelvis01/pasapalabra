@@ -3,8 +3,8 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { convertSnaps, convertSnapsValue, convertSnapsValueObject } from './db-utils';
-import { Nomination, Nominations } from './models/Nominations.model';
+import { convertSnap, convertSnaps, convertSnapsValue, convertSnapsValueObject } from './db-utils';
+import { Nomination, Nominations, SetupNomination, StatusI } from './models/Nominations.model';
 import { v4 as uuid } from 'uuid';
 
 
@@ -15,6 +15,7 @@ import { v4 as uuid } from 'uuid';
 export class FbNominationsService {
 
   collectionName = "nominations";
+  collectionSetup = "setup";
   constructor(
     private db: AngularFireDatabase,
   ) {
@@ -24,7 +25,7 @@ export class FbNominationsService {
 
   setupNominations() {
     let award = new Nominations();
-    this.db.object('nominations').update(award.getNominations());
+    this.db.object(this.collectionName).update(award.getNominations());
   }
 
   getSessionId() {
@@ -48,23 +49,27 @@ export class FbNominationsService {
       .valueChanges()
       .pipe(
         map(res => {
-        const nominations = convertSnapsValueObject<Nomination>(res);
-        return nominations;
-      }));
+          const nominations = convertSnapsValueObject<Nomination>(res);
+          return nominations;
+        }));
   }
-  // getNominationVotes(nominationId:string | undefined): Observable<any> {
-  //   return this.afs.collection(this.collectionName).doc(nominationId).collection('votes')
-  //     .get()
-  //     .pipe(
-  //       map(res => {
-  //         console.log('nsdd',res.docs)
-  //       // const nominations = convertSnapsValue<Nomination>(res);
-  //       // return nominations;
-  //     }));
-  // }
-  vote(nominationId: string = 'vote-error',participateIndex:number) {
+  vote(nominationId: string = 'vote-error', participateIndex: number) {
     const source = `${this.collectionName}/${nominationId}/participates/${participateIndex}/votes`;
     this.db.list(source).push(this.getSessionId());
+  }
+  closeVotes() {
+    this.db.object(this.collectionSetup).update({ status: StatusI.closed });
+  }
+  openVotes() {
+    this.db.object(this.collectionSetup).update({ status: StatusI.open });
+  }
+  getSetup(): Observable<SetupNomination> {
+    return this.db.object(this.collectionSetup)
+      .valueChanges()
+      .pipe(
+        map(res => {
+          return <SetupNomination>res;
+        }));
   }
 
 }

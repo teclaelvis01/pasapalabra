@@ -20,8 +20,10 @@ body,html{
     --sizerosco: 680px;
     --white: #fff;
     --white-2: #ededed;
+    --white-3: #efeff3; 
     --white-opacity-4: #ffffff4d;
     --black: #000;
+    --black-7: #585858;
     --white-opaque: #ffffff24;
     --black-opaque: #00000099;
     --green-bg: #008f39;
@@ -32,8 +34,10 @@ body,html{
     --orange-dark: #cb7300;
     --orange-gold: #ffbf4b;
     --yellow: #f6e38c;
+    --yellow-0: #fee407;
     --default: #008e93; 
 }
 
 @import './assets/scss/roscon/pasapalabra';
 @import './assets/scss/nominations/vote-component';
+@import './assets/scss/nominations/dashboard-component';

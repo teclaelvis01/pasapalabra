@@ -1,6 +1,12 @@
 
-export interface IVotes {
-    id: string;
+export const StatusIClosed = 'closed';
+export const StatusIOpen = 'open';
+export enum StatusI{
+    closed = "closed",
+    open = "open"
+}
+export class SetupNomination {
+    status: StatusI = StatusI.closed;
 }
 export interface IParticipate {
     id: string;

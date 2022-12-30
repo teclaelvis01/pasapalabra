@@ -1,4 +1,6 @@
 <div class="vote-component">
+  <div class="status-votations" *ngIf="setup?.status == statusOpen">Votaciones abiertas</div>
+  <div class="status-votations" [ngClass]="{closed:setup?.status == statusClosed}" *ngIf="setup?.status == statusClosed">Votaciones cerradas</div>
   <div class="vote-container">
     <ng-container *ngIf="currentNomination">
       <div class="award-icon">

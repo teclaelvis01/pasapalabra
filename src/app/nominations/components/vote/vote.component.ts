@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { FbNominationsService } from 'src/app/services/fbNominations.service';
-import { Nomination, Participate } from 'src/app/services/models/Nominations.model';
+import { Nomination, Participate, SetupNomination, StatusI, StatusIClosed, StatusIOpen } from 'src/app/services/models/Nominations.model';
 
 @Component({
   selector: 'app-vote',
@@ -16,6 +16,9 @@ export class VoteComponent implements OnInit, OnDestroy {
   subs$: Subscription[] = [];
   sessionId: string = '';
   isFinish: boolean = false;
+  setup:SetupNomination | undefined;
+  statusOpen = StatusIOpen;
+  statusClosed = StatusIClosed;
   constructor(private fbNominationsService: FbNominationsService) { }
 
   ngOnDestroy(): void {
@@ -23,6 +26,7 @@ export class VoteComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    this.getSetup();
     this.sessionId = this.fbNominationsService.getSessionId();
     let currentPosition = localStorage.getItem('currentPosition');
     if (!currentPosition) {
@@ -34,6 +38,9 @@ export class VoteComponent implements OnInit, OnDestroy {
     this.bodySetup();
     this.getNominations();
 
+  }
+  getSetup() {
+    this.fbNominationsService.getSetup().subscribe(res=>this.setup = res)
   }
   getNominations() {
     const subs$ = this.fbNominationsService.getNominations().subscribe(r => {
@@ -59,6 +66,10 @@ export class VoteComponent implements OnInit, OnDestroy {
     }
   }
   vote(participate: Participate) {
+    if(this.setup?.status == StatusI.closed){
+      alert('Votaciones cerradas');
+      return;
+    }
     let hasVote = false;
     this.currentNomination?.participates.forEach(e => {
       if(!hasVote){

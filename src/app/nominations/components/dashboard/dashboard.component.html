@@ -1,3 +1,38 @@
-<p>
-  dashboard works!
-</p>
+<div class="dashboard-component">
+  <div class="head">
+    <div class="title">
+      Votaciones
+    </div>
+    <div class="actions">
+      <button (click)="onOpen()" type="button" class="btn btn-open" [ngClass]="setup?.status == statusOpen ? 'active' : ''" >Abrir </button>
+      <button (click)="onClose()" type="button" class="btn btn-close" [ngClass]="setup?.status == statusClosed ? 'active' : ''" >Cerrar</button>
+      <button (click)="onRestart()" type="button" class="btn btn-restart">Reiniciar</button>
+    </div>
+  </div>
+  <div class="results">
+    <ng-container *ngFor="let item of nominations">
+      <div class="results-content">
+        <div class="section">{{item.name}}</div>
+        <div class="items">
+          <div class="item" *ngFor="let element of item.participates">
+            <div class="vote-info">
+              <!-- <div class="position">1</div> -->
+              <div class="img">
+                <img [src]="element.imgUrl" alt="" srcset="">
+              </div>
+              <div class="name">{{element.name}}</div>
+            </div>
+            <div class="votes">
+              <div class="reaction">👍</div>
+              <ng-container *ngIf="element.votes">
+                <div class="total">
+                  {{element.votes.length}}
+                </div>
+              </ng-container>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>
