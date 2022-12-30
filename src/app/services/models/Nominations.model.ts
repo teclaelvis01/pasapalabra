@@ -61,6 +61,15 @@ export class Nominations {
     }
 
     private setup() {
+        // Infantil
+        this.create("Ministerio Infantil",
+            [
+                new Participate("Geraldine Rodriguez España", 1, "Geraldine_Rodriguez_España"),
+                new Participate("Nancy Elisabeth Reyes Martinelli", 2, "Nancy_Elisabeth_Reyes_Martinelli"),
+                new Participate("Rosa Ana Ortiz Eduardo", 3, "Rosa_Ana_Ortiz_Eduardo"),
+                new Participate("Tomás y Sara Sánchez Garralón", 4, "Tomás__y_Sara_Sánchez_Garralón"),
+            ]);
+
         // Ministerio de Evangelismo
 
         this.create("Ministerio de Evangelismo",
@@ -96,6 +105,7 @@ export class Nominations {
                 new Participate("Laura Gil", 3, "Laura_Gil"),
                 new Participate("Samuel Asensio", 3, "Samuel_Asensio"),
             ]);
+        
 
     }
 
